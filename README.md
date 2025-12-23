@@ -9,8 +9,8 @@ Propagation Indexing: Real-time tracking of gossip endpoints and validator statu
 Topology Visualization: Visual mapping of node connectivity across the Xandeum ecosystem.
 
 Deployment
-Install dependencies: npm install.
+. Install dependencies: npm install.
 
-Build for production: npm run build.
+. Build for production: npm run build.
 
-Deployed via Vercel for 99.9% uptime.
+. Deployed via Vercel for 99.9% uptime.
