@@ -1,6 +1,5 @@
-/* Replace your current Network Topology div with this */
+{/* Network Topology Container */}
 <div style={{ 
-  /* This matches your existing glassmorphism background */
   background: 'rgba(255, 255, 255, 0.03)',
   backdropFilter: 'blur(10px)',
   border: '1px solid rgba(255, 255, 255, 0.1)',
@@ -10,12 +9,14 @@
   flexDirection: 'column', 
   alignItems: 'center', 
   justifyContent: 'center', 
-  minHeight: '350px' 
+  minHeight: '350px',
+  position: 'relative',
+  overflow: 'hidden'
 }}>
   <h3 style={{ fontSize: '16px', fontWeight: '700', marginBottom: '30px', color: '#6366f1' }}>Live Network Topology</h3>
   
-  {/* The Spinning Container */}
-  <div className="topology-spinner" style={{ 
+  {/* The Spinner with Inline Animation */}
+  <div style={{ 
     width: '180px', 
     height: '180px', 
     borderRadius: '50%', 
@@ -23,7 +24,9 @@
     position: 'relative', 
     display: 'flex', 
     alignItems: 'center', 
-    justifyContent: 'center'
+    justifyContent: 'center',
+    /* Inline Animation Trigger */
+    animation: 'spin 10s linear infinite'
   }}>
     {/* Central Xandeum Core */}
     <div style={{ 
@@ -36,7 +39,7 @@
       zIndex: 2
     }}></div>
     
-    {/* Orbiting Node */}
+    {/* Orbiting Satellite Node */}
     <div style={{ 
       position: 'absolute', 
       top: '-8px', 
@@ -51,17 +54,14 @@
 
   <p style={{ marginTop: '30px', fontSize: '12px', color: '#94a3b8', textAlign: 'center', lineHeight: '1.6' }}>
     Global Peer Distribution<br/>
-    <span style={{ color: '#22c55e', fontWeight: 'bold' }}>● LIVE PROPAGATION ACTIVE</span>
+    <span style={{ color: '#22c55e', fontWeight: 'bold' }}>● LIVE ROTATION ACTIVE</span>
   </p>
 
-  {/* CSS Animation Injection */}
-  <style dangerouslySetInnerHTML={{ __html: `
-    @keyframes rotateTopology {
+  {/* IMPORTANT: Paste this exact block at the bottom of the page.tsx file before the final '}' */}
+  <style>{`
+    @keyframes spin {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
     }
-    .topology-spinner {
-      animation: rotateTopology 10s linear infinite;
-    }
-  `}} />
+  `}</style>
 </div>
