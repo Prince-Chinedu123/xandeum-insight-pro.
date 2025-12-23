@@ -17,14 +17,14 @@ export default function Home() {
   return (
     <div style={{ backgroundColor: xandDeep, minHeight: '100vh', color: 'white', padding: '40px', fontFamily: 'Inter, sans-serif' }}>
       
-      {/* 1. NEW: EPOCH PROGRESS BAR (Top level) */}
+      {/* NEW: TOP-LEVEL EPOCH PROGRESS (Winning Feature) */}
       <div style={{ marginBottom: '30px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', marginBottom: '8px', fontWeight: 'bold' }}>
-          <span>EPOCH 892 PROGRESS</span>
-          <span style={{ color: xandBlue }}>72.4%</span>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', marginBottom: '8px', fontWeight: 'bold', letterSpacing: '1px' }}>
+          <span>CURRENT EPOCH: 898</span>
+          <span style={{ color: xandBlue }}>74.2% COMPLETE</span>
         </div>
-        <div style={{ width: '100%', height: '6px', background: '#1e293b', borderRadius: '10px', overflow: 'hidden' }}>
-          <div style={{ width: '72.4%', height: '100%', background: `linear-gradient(90deg, ${xandBlue}, #a855f7)`, boxShadow: `0 0 10px ${xandBlue}` }}></div>
+        <div style={{ width: '100%', height: '8px', background: '#1e293b', borderRadius: '10px', overflow: 'hidden' }}>
+          <div style={{ width: '74.2%', height: '100%', background: `linear-gradient(90deg, ${xandBlue}, #a855f7)`, boxShadow: `0 0 15px ${xandBlue}66` }}></div>
         </div>
       </div>
 
@@ -35,7 +35,7 @@ export default function Home() {
           </h1>
           <p style={{ color: '#94a3b8', marginTop: '5px' }}>Institutional Validator Suite | Mainnet-Beta</p>
         </div>
-        <button style={{ backgroundColor: xandBlue, color: 'white', border: 'none', padding: '12px 24px', borderRadius: '12px', fontWeight: '700', cursor: 'pointer' }}>
+        <button style={{ backgroundColor: xandBlue, color: 'white', border: 'none', padding: '12px 24px', borderRadius: '12px', fontWeight: '700', cursor: 'pointer', transition: '0.3s' }}>
           Connect Terminal
         </button>
       </header>
@@ -43,19 +43,19 @@ export default function Home() {
       {/* STATS ROW (Now including STOINC) */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginBottom: '40px' }}>
         <div style={glassStyle}>
-          <p style={{ color: '#64748b', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase' }}>Network Status</p>
-          <h2 style={{ fontSize: '28px', color: '#22c55e', margin: '10px 0' }}>Online</h2>
-          <p style={{ fontSize: '12px', color: '#475569' }}>Health: 100%</p>
+          <p style={{ color: '#64748b', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase' }}>Network Health</p>
+          <h2 style={{ fontSize: '28px', color: '#22c55e', margin: '10px 0' }}>100%</h2>
+          <p style={{ fontSize: '12px', color: '#475569' }}>Operational</p>
         </div>
         <div style={glassStyle}>
-          <p style={{ color: '#64748b', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase' }}>STOINC (Est. Yield)</p>
-          <h2 style={{ fontSize: '28px', color: xandBlue, margin: '10px 0' }}>14,200 <span style={{fontSize: '14px'}}>XAND</span></h2>
-          <p style={{ fontSize: '12px', color: '#475569' }}>Storage Rewards Active</p>
+          <p style={{ color: '#64748b', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase' }}>STOINC Rewards</p>
+          <h2 style={{ fontSize: '28px', color: xandBlue, margin: '10px 0' }}>12.4K <span style={{fontSize: '14px'}}>XAND</span></h2>
+          <p style={{ fontSize: '12px', color: '#475569' }}>Est. This Epoch</p>
         </div>
         <div style={glassStyle}>
-          <p style={{ color: '#64748b', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase' }}>Validator APY</p>
-          <h2 style={{ fontSize: '28px', margin: '10px 0' }}>6.31%</h2>
-          <p style={{ fontSize: '12px', color: '#475569' }}>MEV Inclusive</p>
+          <p style={{ color: '#64748b', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase' }}>Active pNodes</p>
+          <h2 style={{ fontSize: '28px', margin: '10px 0' }}>1,204</h2>
+          <p style={{ fontSize: '12px', color: '#475569' }}>Global Mesh</p>
         </div>
         <div style={glassStyle}>
           <p style={{ color: '#64748b', fontSize: '11px', fontWeight: '700', textTransform: 'uppercase' }}>Storage Depth</p>
@@ -67,33 +67,33 @@ export default function Home() {
       <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '30px' }}>
         {/* TABLE SECTION */}
         <div style={glassStyle}>
-          <h3 style={{ fontSize: '18px', fontWeight: '700', marginBottom: '20px' }}>Live Node Propagation</h3>
+          <h3 style={{ fontSize: '18px', fontWeight: '700', marginBottom: '20px' }}>Node Propagation Index</h3>
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>
               <tr style={{ textAlign: 'left', borderBottom: '1px solid #1e293b', color: '#475569', fontSize: '11px' }}>
                 <th style={{ paddingBottom: '15px' }}>Identifier</th>
-                <th style={{ paddingBottom: '15px' }}>Gossip</th>
-                <th style={{ paddingBottom: '15px' }}>Uptime</th>
+                <th style={{ paddingBottom: '15px' }}>Endpoint</th>
+                <th style={{ paddingBottom: '15px' }}>Status</th>
               </tr>
             </thead>
             <tbody style={{ fontSize: '14px', color: '#cbd5e1' }}>
               <tr style={{ borderBottom: '1px solid #0f172a' }}>
                 <td style={{ padding: '18px 0' }}>Xand_Global_Alpha</td>
                 <td style={{ fontFamily: 'monospace' }}>192.168.1.101</td>
-                <td style={{ color: '#22c55e' }}>99.98%</td>
+                <td style={{ color: '#22c55e' }}>ONLINE</td>
               </tr>
               <tr style={{ borderBottom: '1px solid #0f172a' }}>
                 <td style={{ padding: '18px 0' }}>Xand_Global_Beta</td>
                 <td style={{ fontFamily: 'monospace' }}>192.168.1.102</td>
-                <td style={{ color: '#22c55e' }}>99.95%</td>
+                <td style={{ color: '#22c55e' }}>ONLINE</td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        {/* SPINNING TOPOLOGY */}
+        {/* SPINNING TOPOLOGY (Optimized) */}
         <div style={{ ...glassStyle, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-          <h3 style={{ fontSize: '16px', fontWeight: '700', marginBottom: '30px', color: xandBlue }}>Global Topology</h3>
+          <h3 style={{ fontSize: '16px', fontWeight: '700', marginBottom: '30px', color: xandBlue }}>Network Topology</h3>
           <div className="topology-spinner" style={{ 
             width: '180px', height: '180px', borderRadius: '50%', border: '1px dashed rgba(14, 165, 233, 0.3)', 
             position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center',
