@@ -9,14 +9,12 @@
   flexDirection: 'column', 
   alignItems: 'center', 
   justifyContent: 'center', 
-  minHeight: '350px',
-  position: 'relative',
-  overflow: 'hidden'
+  minHeight: '350px' 
 }}>
   <h3 style={{ fontSize: '16px', fontWeight: '700', marginBottom: '30px', color: '#6366f1' }}>Live Network Topology</h3>
   
-  {/* The Spinner with Inline Animation */}
-  <div style={{ 
+  {/* The Spinning Container */}
+  <div className="topology-spinner" style={{ 
     width: '180px', 
     height: '180px', 
     borderRadius: '50%', 
@@ -24,44 +22,25 @@
     position: 'relative', 
     display: 'flex', 
     alignItems: 'center', 
-    justifyContent: 'center',
-    /* Inline Animation Trigger */
-    animation: 'spin 10s linear infinite'
+    justifyContent: 'center'
   }}>
-    {/* Central Xandeum Core */}
-    <div style={{ 
-      width: '60px', 
-      height: '60px', 
-      borderRadius: '50%', 
-      background: 'radial-gradient(circle, #6366f1, #4338ca)', 
-      border: '2px solid #fff', 
-      boxShadow: '0 0 30px rgba(99, 102, 241, 0.6)',
-      zIndex: 2
-    }}></div>
-    
-    {/* Orbiting Satellite Node */}
-    <div style={{ 
-      position: 'absolute', 
-      top: '-8px', 
-      width: '16px', 
-      height: '16px', 
-      background: '#fff', 
-      borderRadius: '50%', 
-      boxShadow: '0 0 15px #fff',
-      border: '2px solid #6366f1'
-    }}></div>
+    <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: 'radial-gradient(circle, #6366f1, #4338ca)', border: '2px solid #fff', boxShadow: '0 0 30px rgba(99, 102, 241, 0.6)' }}></div>
+    <div style={{ position: 'absolute', top: '-8px', width: '16px', height: '16px', background: '#fff', borderRadius: '50%', boxShadow: '0 0 15px #fff', border: '2px solid #6366f1' }}></div>
   </div>
 
-  <p style={{ marginTop: '30px', fontSize: '12px', color: '#94a3b8', textAlign: 'center', lineHeight: '1.6' }}>
+  <p style={{ marginTop: '30px', fontSize: '12px', color: '#94a3b8', textAlign: 'center' }}>
     Global Peer Distribution<br/>
     <span style={{ color: '#22c55e', fontWeight: 'bold' }}>● LIVE ROTATION ACTIVE</span>
   </p>
 
-  {/* IMPORTANT: Paste this exact block at the bottom of the page.tsx file before the final '}' */}
+  {/* KEY FIX: Injecting the Keyframes into the Browser */}
   <style>{`
     @keyframes spin {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
+    }
+    .topology-spinner {
+      animation: spin 12s linear infinite;
     }
   `}</style>
 </div>
