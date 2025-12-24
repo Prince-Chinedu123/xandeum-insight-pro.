@@ -1,8 +1,11 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function Home() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [expandedNode, setExpandedNode] = useState<string | null>(null);
+  
   const xandBlue = '#0ea5e9'; 
   const xandDeep = '#020617';
 
@@ -12,117 +15,135 @@ export default function Home() {
     border: '1px solid rgba(255, 255, 255, 0.12)',
     borderRadius: '24px',
     padding: '24px',
-    boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+    transition: 'all 0.3s ease'
   };
 
+  const nodes = [
+    { id: 'Xand_Global_Alpha', score: 98, fee: '5%', status: 'ONLINE', version: '1.18.1', uptime: '99.9%', hardware: '64-Core AMD / 256GB RAM', datacenter: 'Equinix NY' },
+    { id: 'Xand_Global_Beta', score: 92, fee: '8%', status: 'ONLINE', version: '1.18.0', uptime: '99.2%', hardware: '32-Core Intel / 128GB RAM', datacenter: 'Edgevana FR' },
+    { id: 'Xand_Global_Gamma', score: 85, fee: '0%', status: 'ONLINE', version: '1.17.5', uptime: '98.5%', hardware: 'Custom / 64GB RAM', datacenter: 'AWS Asia' }
+  ];
+
   return (
-    <div style={{ backgroundColor: xandDeep, minHeight: '100vh', color: 'white', padding: '40px', fontFamily: 'Inter, system-ui, sans-serif' }}>
+    <div style={{ backgroundColor: xandDeep, minHeight: '100vh', color: 'white', padding: '40px', fontFamily: 'Inter, sans-serif' }}>
       
-      {/* 1. EPOCH PROGRESS TRACKER (High-Value Feature) */}
-      <div style={{ marginBottom: '35px', maxWidth: '1200px', margin: '0 auto 35px auto' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', marginBottom: '10px', fontWeight: '800', letterSpacing: '1px', color: '#94a3b8' }}>
+      {/* 1. EPOCH PROGRESS TRACKER */}
+      <div style={{ marginBottom: '35px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', marginBottom: '10px', fontWeight: '800', letterSpacing: '1.5px', color: '#94a3b8' }}>
           <span>EPOCH 898 STATUS</span>
           <span style={{ color: xandBlue }}>74.2% TO DISTRIBUTION</span>
         </div>
-        <div style={{ width: '100%', height: '10px', background: '#1e293b', borderRadius: '20px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.05)' }}>
-          <div style={{ width: '74.2%', height: '100%', background: `linear-gradient(90deg, ${xandBlue}, #a855f7)`, boxShadow: `0 0 20px ${xandBlue}88` }}></div>
+        <div style={{ width: '100%', height: '8px', background: '#1e293b', borderRadius: '10px', overflow: 'hidden' }}>
+          <div style={{ width: '74.2%', height: '100%', background: `linear-gradient(90deg, ${xandBlue}, #a855f7)`, boxShadow: `0 0 15px ${xandBlue}66` }}></div>
         </div>
       </div>
 
-      <header style={{ marginBottom: '40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '1200px', margin: '0 auto 40px auto' }}>
+      <header style={{ marginBottom: '40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <div>
-          <h1 style={{ fontSize: '36px', fontWeight: '900', letterSpacing: '-1.5px', margin: 0, background: `linear-gradient(to right, ${xandBlue}, #818cf8)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+          <h1 style={{ fontSize: '32px', fontWeight: '800', letterSpacing: '-1.5px', margin: 0, background: `linear-gradient(to right, ${xandBlue}, #a855f7)`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
             XandeumInsight Pro
           </h1>
-          <p style={{ color: '#64748b', marginTop: '5px', fontSize: '14px', fontWeight: '500' }}>Scalable Storage Infrastructure | Mainnet-Beta v1.4.2</p>
+          <p style={{ color: '#64748b', marginTop: '5px', fontSize: '13px' }}>Institutional pNode Analytics | STOINC Layer-2</p>
         </div>
-        <div style={{ display: 'flex', gap: '15px' }}>
-          <div style={{ textAlign: 'right', marginRight: '15px' }}>
-            <p style={{ margin: 0, fontSize: '10px', color: '#64748b', fontWeight: 'bold' }}>NETWORK LOAD</p>
-            <p style={{ margin: 0, fontSize: '14px', color: '#22c55e', fontWeight: '700' }}>342 TPS</p>
-          </div>
-          <button style={{ backgroundColor: xandBlue, color: 'white', border: 'none', padding: '12px 28px', borderRadius: '14px', fontWeight: '800', cursor: 'pointer', fontSize: '14px' }}>
-            Terminal Access
-          </button>
-        </div>
+        <button style={{ backgroundColor: xandBlue, color: 'white', border: 'none', padding: '12px 24px', borderRadius: '12px', fontWeight: '700', cursor: 'pointer' }}>
+          Connect Terminal
+        </button>
       </header>
 
       {/* CORE METRICS GRID */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginBottom: '40px', maxWidth: '1200px', margin: '0 auto 40px auto' }}>
-        <div style={glassStyle}>
-          <p style={{ color: '#64748b', fontSize: '11px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.5px' }}>vNode Health</p>
-          <h2 style={{ fontSize: '28px', color: '#22c55e', margin: '10px 0', fontWeight: '800' }}>99.9%</h2>
-          <p style={{ fontSize: '12px', color: '#475569' }}>Consensus Active</p>
-        </div>
-        <div style={glassStyle}>
-          <p style={{ color: '#64748b', fontSize: '11px', fontWeight: '800', textTransform: 'uppercase' }}>STOINC (Rewards)</p>
-          <h2 style={{ fontSize: '28px', color: xandBlue, margin: '10px 0', fontWeight: '800' }}>12.4K <span style={{fontSize: '14px', verticalAlign: 'middle'}}>XAND</span></h2>
-          <p style={{ fontSize: '12px', color: '#475569' }}>Storage Fee Accrual</p>
-        </div>
-        <div style={glassStyle}>
-          <p style={{ color: '#64748b', fontSize: '11px', fontWeight: '800', textTransform: 'uppercase' }}>pNode Mesh</p>
-          <h2 style={{ fontSize: '28px', margin: '10px 0', fontWeight: '800' }}>1,204</h2>
-          <p style={{ fontSize: '12px', color: '#475569' }}>Provider Density</p>
-        </div>
-        <div style={glassStyle}>
-          <p style={{ color: '#64748b', fontSize: '11px', fontWeight: '800', textTransform: 'uppercase' }}>Storage Depth</p>
-          <h2 style={{ fontSize: '28px', margin: '10px 0', fontWeight: '800' }}>4.2 PB</h2>
-          <p style={{ fontSize: '12px', color: xandBlue }}>Exabyte Ready</p>
-        </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginBottom: '40px' }}>
+        {[
+          { label: 'Network Health', val: '100%', sub: 'Operational' },
+          { label: 'STOINC Yield', val: '12.4K', sub: 'XAND Earned' },
+          { label: 'Global pNodes', val: '1,204', sub: 'Active Peer-Mesh' },
+          { label: 'Storage Depth', val: '4.2 PB', sub: 'Exabyte Ready' }
+        ].map((stat, i) => (
+          <div key={i} style={glassStyle}>
+            <p style={{ color: '#64748b', fontSize: '10px', fontWeight: '800', textTransform: 'uppercase' }}>{stat.label}</p>
+            <h2 style={{ fontSize: '28px', color: i === 0 ? '#22c55e' : (i === 1 ? xandBlue : 'white'), margin: '10px 0' }}>{stat.val}</h2>
+            <p style={{ fontSize: '11px', color: '#475569' }}>{stat.sub}</p>
+          </div>
+        ))}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1.8fr 1.2fr', gap: '30px', maxWidth: '1200px', margin: '0 auto' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1.8fr 1.2fr', gap: '30px' }}>
         
-        {/* NODE REGISTRY */}
+        {/* ENHANCED CLICKABLE TABLE SECTION */}
         <div style={glassStyle}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '25px' }}>
-            <h3 style={{ fontSize: '20px', fontWeight: '800' }}>Provider Node Registry</h3>
-            <span style={{ fontSize: '12px', color: xandBlue, background: `${xandBlue}22`, padding: '4px 12px', borderRadius: '20px', fontWeight: '700' }}>● LIVE GOSSIP</span>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+            <h3 style={{ fontSize: '18px', fontWeight: '700' }}>pNode Scoreboard (Stakewiz-Logic)</h3>
+            <input 
+              type="text" 
+              placeholder="Search by Node ID..." 
+              style={{ background: '#0f172a', border: '1px solid #1e293b', padding: '8px 15px', borderRadius: '8px', color: 'white', fontSize: '12px', outline: 'none' }}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
           </div>
-          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-            <thead>
-              <tr style={{ textAlign: 'left', borderBottom: '1px solid #1e293b', color: '#475569', fontSize: '11px', textTransform: 'uppercase', fontWeight: '800' }}>
-                <th style={{ paddingBottom: '15px' }}>pNode ID</th>
-                <th style={{ paddingBottom: '15px' }}>RPC Endpoint</th>
-                <th style={{ paddingBottom: '15px' }}>Liveness</th>
-              </tr>
-            </thead>
-            <tbody style={{ fontSize: '14px', color: '#cbd5e1' }}>
-              {[1, 2, 3].map((n) => (
-                <tr key={n} style={{ borderBottom: '1px solid #0f172a' }}>
-                  <td style={{ padding: '20px 0', fontWeight: '600' }}>Xand_pNode_Region_{n === 1 ? 'US' : n === 2 ? 'EU' : 'ASIA'}</td>
-                  <td style={{ fontFamily: 'monospace', color: '#94a3b8' }}>142.251.3{n}.1{n}4</td>
-                  <td style={{ color: '#22c55e', fontWeight: '700' }}>VERIFIED</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+
+          <div style={{ width: '100%' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', padding: '10px 0', borderBottom: '1px solid #1e293b', color: '#475569', fontSize: '11px', fontWeight: '800' }}>
+              <div>pNODE IDENTIFIER</div>
+              <div>WIZ SCORE</div>
+              <div>COMM.</div>
+              <div>STATUS</div>
+            </div>
+
+            {nodes.filter(n => n.id.toLowerCase().includes(searchTerm.toLowerCase())).map((node, i) => (
+              <div key={i}>
+                <div 
+                  onClick={() => setExpandedNode(expandedNode === node.id ? null : node.id)}
+                  style={{ 
+                    display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', padding: '20px 0', 
+                    borderBottom: '1px solid #0f172a', cursor: 'pointer', transition: 'background 0.2s',
+                    color: expandedNode === node.id ? xandBlue : '#cbd5e1'
+                  }}
+                  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.03)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
+                >
+                  <div style={{ fontWeight: '600' }}>{node.id} {expandedNode === node.id ? '▾' : '▸'}</div>
+                  <div style={{ color: node.score > 90 ? '#22c55e' : xandBlue, fontWeight: '700' }}>{node.score}%</div>
+                  <div>{node.fee}</div>
+                  <div style={{ color: '#22c55e', fontWeight: '800', fontSize: '11px' }}>{node.status}</div>
+                </div>
+
+                {/* CLICKABLE EXTRA INFO (Stakewiz-Inspired) */}
+                {expandedNode === node.id && (
+                  <div style={{ background: 'rgba(14, 165, 233, 0.05)', padding: '20px', borderRadius: '12px', margin: '10px 0', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', borderLeft: `3px solid ${xandBlue}` }}>
+                    <div>
+                      <p style={{ color: '#64748b', fontSize: '10px', margin: 0 }}>VERSION</p>
+                      <p style={{ fontSize: '14px', margin: '5px 0 0 0' }}>{node.version}</p>
+                    </div>
+                    <div>
+                      <p style={{ color: '#64748b', fontSize: '10px', margin: 0 }}>HARDWARE</p>
+                      <p style={{ fontSize: '14px', margin: '5px 0 0 0' }}>{node.hardware}</p>
+                    </div>
+                    <div>
+                      <p style={{ color: '#64748b', fontSize: '10px', margin: 0 }}>UPTIME</p>
+                      <p style={{ fontSize: '14px', color: '#22c55e', margin: '5px 0 0 0' }}>{node.uptime}</p>
+                    </div>
+                    <div>
+                      <p style={{ color: '#64748b', fontSize: '10px', margin: 0 }}>DATA CENTER</p>
+                      <p style={{ fontSize: '14px', margin: '5px 0 0 0' }}>{node.datacenter}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* TOPOLOGY VISUALIZER */}
-        <div style={{ ...glassStyle, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '400px' }}>
-          <h3 style={{ fontSize: '16px', fontWeight: '800', marginBottom: '40px', color: xandBlue, letterSpacing: '1px', textTransform: 'uppercase' }}>Network Topology</h3>
-          
-          <div className="topology-spinner" style={{ 
-            width: '200px', height: '200px', borderRadius: '50%', 
-            border: '2px dashed rgba(14, 165, 233, 0.25)', 
+        <div style={{ ...glassStyle, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+          <h3 style={{ fontSize: '16px', fontWeight: '700', marginBottom: '30px', color: xandBlue }}>Network Topology</h3>
+          <div style={{ 
+            width: '180px', height: '180px', borderRadius: '50%', border: '1px dashed rgba(14, 165, 233, 0.3)', 
             position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center',
-            animation: 'spin 20s linear infinite' 
+            animation: 'spin 15s linear infinite' 
           }}>
-            {/* Core Validator Node */}
-            <div style={{ width: '70px', height: '70px', borderRadius: '50%', background: `radial-gradient(circle at 30% 30%, ${xandBlue}, #0369a1)`, border: '2px solid rgba(255,255,255,0.8)', boxShadow: `0 0 40px ${xandBlue}88` }}></div>
-            
-            {/* pNode Satellite */}
-            <div style={{ position: 'absolute', top: '-10px', width: '20px', height: '20px', background: '#fff', borderRadius: '50%', boxShadow: '0 0 20px #fff', border: `3px solid ${xandBlue}` }}></div>
-            
-            {/* Secondary pNode Satellite */}
-            <div style={{ position: 'absolute', bottom: '20px', right: '-5px', width: '12px', height: '12px', background: '#a855f7', borderRadius: '50%', boxShadow: '0 0 15px #a855f7', border: '2px solid #fff' }}></div>
+            <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: `radial-gradient(circle, ${xandBlue}, #0369a1)`, border: '2px solid #fff', boxShadow: `0 0 30px ${xandBlue}66` }}></div>
+            <div style={{ position: 'absolute', top: '-8px', width: '16px', height: '16px', background: '#fff', borderRadius: '50%', boxShadow: '0 0 15px #fff', border: `2px solid ${xandBlue}` }}></div>
           </div>
-
-          <div style={{ marginTop: '40px', textAlign: 'center' }}>
-            <p style={{ margin: 0, fontSize: '11px', color: '#64748b', fontWeight: '700', letterSpacing: '1.5px' }}>GOSSIP MESH VISUALIZER</p>
-            <p style={{ margin: '5px 0 0 0', fontSize: '12px', color: '#22c55e', fontWeight: 'bold' }}>LATENCY: 142ms (OPTIONAL)</p>
-          </div>
+          <p style={{ marginTop: '30px', fontSize: '11px', color: '#64748b', fontWeight: '800', letterSpacing: '1px' }}>PEER GOSSIP SYNC</p>
         </div>
       </div>
 
